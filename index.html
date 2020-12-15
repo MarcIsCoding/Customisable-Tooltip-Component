@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Tooltip</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="logo-container">
+        <img src="./logo.png" alt="" class="logo">
+        <p>Marc Garside<br>Web-Dev</p>
+    </div>
+    <div class="container">
+        <h1>My Customisable Tooltip Component</h1>
+        <p>Hover over
+            <mg-tooltip alert_decoration='underline' alert_hl_color='red' alert_txt_color='white' alert_weight='normal' alert_opacity='1' message_bg='blue' message_txt_color='white' message_weight='normal' tooltip_shadow='none' >
+                <span slot="alert">
+                    This thing here!
+                </span>
+                <span slot="message">
+                    I changed!
+                </span>
+            </mg-tooltip> 
+        </p>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>
