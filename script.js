@@ -2,6 +2,9 @@ const template = document.createElement('template')
 
 template.innerHTML = `
     <style>
+        :host {
+            --msg-bg: white;
+        }
         .open {
             cursor: pointer;
             opacity: .8;
@@ -17,7 +20,7 @@ template.innerHTML = `
             bottom: 125%;
             z-index: 20;
             width: 300px;
-            background: white;
+            background: var(--msg-bg);
             box-shadow: 5px 5px 10px rgba(0,0,0,.1);
             font-size: .8em;
             font-weight: bold;
@@ -26,6 +29,16 @@ template.innerHTML = `
             transform: scale(0);
             transform-origin: bottom left;
             transition: transform 0.5s cubic-bezier(0.860, 0.000, 0.070, 1.000);
+        }
+        .message-container:before {
+            border: solid;
+            border-color: var(--msg-bg) transparent;
+            border-width: 15px 8px 0 8px;
+            content: "";
+            left: 5px;
+            bottom: -10px;
+            position: absolute;
+            transform: rotate(20deg)
         }
     </style>
 
@@ -69,7 +82,7 @@ class MgTooltip extends HTMLElement {
         })
 
         if(this.getAttribute('message_bg')){
-            this.shadowRoot.querySelector('.message-container').style.background = this.getAttribute('message_bg')
+            this.shadowRoot.querySelector('.message-container').style.setProperty('--msg-bg', this.getAttribute('message_bg'))
         }
         if(this.getAttribute('message_txt_color')){
             this.shadowRoot.querySelector('.message-container').style.color = this.getAttribute('message_txt_color')
