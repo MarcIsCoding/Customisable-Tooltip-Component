@@ -1,4 +1,4 @@
-# Project Title
+# Customisable Tooltip Component
 
 This is a JavaScript web component, that is completely customisable inside the HTML and can be used inside any framework.
 
