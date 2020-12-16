@@ -36,34 +36,44 @@ Voila! you have a tooltip.
 
 # Customise to your hearts content
 
-You can easily override the default style using the following hooks inside the HTML document. No need to mess with CSS or JavaScript!
+You can easily override the default style using the following hooks inside the opening `<mg-tooltip>` tag in the HTML document. No need to mess with CSS or JavaScript!
 
 All hooks accept standard CSS values (with the exception of click_toggle)
 
-# Alert Hooks
+## Alert Hooks
 
-alert_decoration = (text-decoration property - e.g. 'underline')
-alert_hl_color = (background-color property - e.g. '#fc9292')
-alert_txt_color = (color property - e.g. '#ffffff')
-alert_weight = (font-weight property - e.g. 'bold')
-alert_opacity = (opacity property - e.g. '1')
+```html
+<mg-tooltip
+  alert_decoration=""
+  alert_hl_color=""
+  alert_txt_color=""
+  alert_weight=""
+  alert_opacity=""
+></mg-tooltip>
+```
 
-# Tooltip Message Hooks
+## Tooltip Message Hooks
 
-message_bg = (background-color property - e.g. 'gray')
-message_txt_color = (color property - e.g. '#ffffff')
-message_weight = (font-weight property - e.g. '400')
-tooltip_shadow = (box-shadow property - e.g. '3px 3px 6px rgba(0,0,0,0.3)')
+```html
+<mg-tooltip
+  message_bg=""
+  message_txt_color=""
+  message_weight=""
+  tooltip_shadow=""
+></mg-tooltip>
+```
 
-# Other Hooks
+## Other Hooks
 
-click_toggle
+```html
+<mg-tooltip click_toggle=""></mg-tooltip>
+```
 
 This determines whether the tooltip is triggered with a click, or the default hover.
 
 Enter ANY value to activate the click_toggle property or leave blank to use the default hover effect.
 
-# Example Hooks
+## Example Hooks
 
 ```html
 <mg-tooltip
@@ -75,11 +85,11 @@ Enter ANY value to activate the click_toggle property or leave blank to use the 
   message_bg="gray"
   message_txt_color="#ffffff"
   message_weight="400"
-  tooltip_shadow="none"
+  tooltip_shadow="3px 3px 6px rgba(0,0,0,0.5)"
   click_toggle="y"
 ></mg-tooltip>
 ```
 
-## Technologies Used
+# Technologies Used
 
 Pure HTML, CSS and vanilla JavaScript. That's it...
