@@ -16,6 +16,8 @@ Then inside the `<span slot="message">` tags, add your tooltip message.
 
 ## Example:
 
+Lets take the following:
+
 ```html
 <p>For more info, hover here!</p>
 ```
