@@ -40,8 +40,16 @@ template.innerHTML = `
             position: absolute;
             transform: rotate(20deg)
         }
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 15;
+            display: none;
+        }
     </style>
-
     <div class="tooltip-container">
         <div class="open alert-container">
             <slot name="alert" />
@@ -50,6 +58,7 @@ template.innerHTML = `
         <div class="message-container">
             <slot name="message" />
         </div>
+        <div class="overlay"></div>
     </div>
 `
 
@@ -74,13 +83,24 @@ class MgTooltip extends HTMLElement {
     }
 
     connectedCallback() {
-        this.shadowRoot.querySelector('.open').addEventListener('mouseover', () => {
-            this.tooltip(true)
-        })
-        this.shadowRoot.querySelector('.open').addEventListener('mouseout', () => {
-            this.tooltip(false)
-        })
 
+        if(this.getAttribute('click_toggle')){
+            this.shadowRoot.querySelector('.open').addEventListener('click', () => {
+                this.tooltip(true)
+                this.shadowRoot.querySelector('.overlay').style.display = 'block'
+            })
+            this.shadowRoot.querySelector('.overlay').addEventListener('click', () => {
+                this.tooltip(false)
+                this.shadowRoot.querySelector('.overlay').style.display = 'none'
+            })
+        }else{
+            this.shadowRoot.querySelector('.open').addEventListener('mouseover', () => {
+                this.tooltip(true)
+            })
+            this.shadowRoot.querySelector('.open').addEventListener('mouseout', () => {
+                this.tooltip(false)
+            })
+        }
         if(this.getAttribute('message_bg')){
             this.shadowRoot.querySelector('.message-container').style.setProperty('--msg-bg', this.getAttribute('message_bg'))
         }
